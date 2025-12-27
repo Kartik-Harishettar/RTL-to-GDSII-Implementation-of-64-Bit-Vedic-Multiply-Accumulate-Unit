@@ -109,7 +109,7 @@ timing closure. Arithmetic blocks were clustered to optimize critical paths.
 
 ---
 
-## 9️⃣ Routing
+## 8️⃣ Routing
 Global and detailed routing were completed while adhering to 90nm design rules.
 
 <p align="center">
@@ -119,7 +119,7 @@ Global and detailed routing were completed while adhering to 90nm design rules.
 
 ---
 
-## 🔟 Antenna Check
+## 9️⃣ Antenna Check
 Antenna rule checks were performed and violations were resolved using diode insertion
 and routing optimization.
 
@@ -130,7 +130,7 @@ and routing optimization.
 
 ---
 
-## 1️⃣1️⃣ Physical Verification (DRC)
+## 🔟 Physical Verification (DRC)
 The design completed Design Rule Checking (DRC) with zero violations.
 
 <p align="center">
@@ -140,7 +140,7 @@ The design completed Design Rule Checking (DRC) with zero violations.
 
 ---
 
-## 1️⃣2️⃣ Area Utilization
+## 1️⃣1️⃣ Area Utilization
 Post-layout area analysis confirms efficient utilization of silicon area.
 
 <p align="center">
@@ -150,7 +150,7 @@ Post-layout area analysis confirms efficient utilization of silicon area.
 
 ---
 
-## 1️⃣4️⃣ Post-Layout Timing Analysis
+## 1️⃣2️⃣ Post-Layout Timing Analysis
 Post-layout STA confirms **positive timing slack**, indicating successful timing closure.
 
 <p align="center">
@@ -160,7 +160,7 @@ Post-layout STA confirms **positive timing slack**, indicating successful timing
 
 ---
 
-## 1️⃣5️⃣ GDSII Generation
+## 1️⃣3️⃣GDSII Generation
 The final GDSII layout was generated after successful routing and physical verification.
 
 ⚠️ **Note:** GDSII and standard-cell libraries are excluded due to EDA licensing
