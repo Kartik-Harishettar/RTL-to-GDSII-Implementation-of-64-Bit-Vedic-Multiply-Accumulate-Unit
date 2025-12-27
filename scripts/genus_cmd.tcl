@@ -1,17 +1,17 @@
-read_libs /home/adld22ec193/genus/library/slow.lib
-read_hdl /home/adld22ec193/GH/Vedic_SDP_64bit/mac.v
+read_libs slow.lib
+read_hdl mac.v
 elaborate
-read_sdc /home/adld22ec193/GH/vedic_sdp/MAC.sdc
-set_db syn_generic_effort high and optimization
-set_db syn_map_effort high
-set_db syn_opt_effort high
+read_sdc constraints_top.sdc
+set_db syn_generic_effort medium
+set_db syn_map_effort medium
+set_db syn_opt_effort medium
 syn_generic
 syn_map
 syn_opt
-report_timing > /home/adld22ec193/GH/Vedic_SDP_64bit/rpt_time.rep
-report_area > /home/adld22ec193/GH/Vedic_SDP_64bit/rpt_area.rep
-report_power > /home/adld22ec193/GH/Vedic_SDP_64bit/rpt_power.rep
-report_gates > /home/adld22ec193/GH/Vedic_SDP_64bit/gates.rep
-write_hdl > /home/adld22ec193/GH/Vedic_SDP_64bit/MAC_netlist.v
-write_sdc > /home/adld22ec193/GH/Vedic_SDP_64bit/MAC_new.sdc
+report_timing > rpt_time.rep
+report_area > rpt_area.rep
+report_power > rpt_power.rep
+report_gates > gates.rep
+write_hdl > MAC_netlist.v
+write_sdc > MAC_new.sdc
 
