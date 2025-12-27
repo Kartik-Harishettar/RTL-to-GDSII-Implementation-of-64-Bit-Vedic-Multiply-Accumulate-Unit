@@ -10,162 +10,158 @@ accumulation in a single operation, making it critical for compute-intensive app
 
 This project presents the complete **RTL-to-GDSII implementation of a 64-bit Vedic
 Multiply–Accumulate (MAC) unit** using **Verilog HDL** and **Cadence EDA tools**
-targeting **90nm CMOS technology**. The design leverages the **Urdhva–Tiryagbhyam**
-Vedic multiplication technique to achieve high-speed and area-efficient arithmetic
-operations.
+targeting **90nm CMOS technology**. The design leverages the
+**Urdhva–Tiryagbhyam** Vedic multiplication technique to achieve high-speed and
+area-efficient arithmetic operations.
 
 ---
 
 ## 🧠 MAC Architecture Overview
 The 64-bit Vedic MAC architecture consists of:
-- A Vedic multiplier based on Urdhva–Tiryagbhyam
-- A 64-bit accumulator
-- Control logic with enable and reset
-- Clocked registers for sequential accumulation
+- Vedic multiplier based on Urdhva–Tiryagbhyam  
+- 64-bit accumulator  
+- Control logic with enable and reset  
+- Clocked registers for sequential accumulation  
 
-![MAC Block Diagram](results/mac_block_diagram.png)
-*Block diagram of the 64-bit Vedic MAC unit*
+<p align="center">
+  <img src="results/mac_block_diagram.png" width="550">
+</p>
+<p align="center"><i>Block diagram of the 64-bit Vedic MAC unit</i></p>
 
 ---
 
 ## 1️⃣ RTL Design
 The RTL was implemented in **Verilog HDL** using a hierarchical and modular approach.
-Smaller Vedic multiplier blocks are recursively combined to form the 64-bit multiplier,
-ensuring scalability and ease of verification.
+Smaller Vedic multiplier blocks are recursively combined to form the 64-bit multiplier.
 
-![RTL Schematic](results/rtl_schematic.png)
-*RTL schematic of the 64-bit Vedic MAC*
+<p align="center">
+  <img src="results/rtl_schematic.png" width="600">
+</p>
+<p align="center"><i>RTL schematic of the 64-bit Vedic MAC</i></p>
 
 ---
 
 ## 2️⃣ Functional Verification
 Functional verification was performed using a dedicated Verilog testbench. Simulation
-waveforms confirm correct multiplication, accumulation, reset, and enable behavior
-before synthesis.
+waveforms confirm correct multiplication, accumulation, reset, and enable behavior.
 
-![Simulation Waveform](results/simulation_waveform.png)
-*Simulation results verifying MAC functionality*
+<p align="center">
+  <img src="results/simulation_waveform.png" width="700">
+</p>
+<p align="center"><i>Simulation waveform verifying MAC functionality</i></p>
 
 ---
 
 ## 3️⃣ Example: Partial Product Generation
-To understand the advantage of the Vedic multiplier, consider a simple binary
-multiplication example.
+In a conventional binary multiplier, partial products are generated sequentially,
+increasing propagation delay. In contrast, the Vedic multiplier generates partial
+products in parallel using vertical and crosswise operations, significantly improving
+performance.
 
-In a conventional binary multiplier, partial products are generated sequentially by
-ANDing each bit of the multiplier with the multiplicand and shifting accordingly. Each
-partial product is summed sequentially, increasing propagation delay.
-
-![Partial Product Example](results/partial_product_example.png)
-*Partial product generation in a conventional binary multiplier*
-
-In contrast, the **Vedic multiplier (Urdhva–Tiryagbhyam)** generates partial products
-in parallel using vertical and crosswise operations. These products are summed
-hierarchically, significantly reducing delay and improving performance.
+<p align="center">
+  <img src="results/partial_product_example.png" width="650">
+</p>
+<p align="center"><i>Partial product generation comparison</i></p>
 
 ---
 
 ## 4️⃣ Floorplanning
-Floorplanning was performed in **Cadence Innovus** by defining the core area, aspect
-ratio, and standard-cell rows. The wide datapath of the 64-bit MAC was carefully
-considered to reduce routing congestion and improve timing.
+Floorplanning was carried out in **Cadence Innovus** by defining the core area, aspect
+ratio, and standard-cell rows to reduce congestion and improve timing.
 
-![Floorplan View](results/floorplan.png)
-*Floorplan showing core boundary and layout organization*
+<p align="center">
+  <img src="results/floorplan.png" width="600">
+</p>
+<p align="center"><i>Floorplan showing core boundary and layout organization</i></p>
 
 ---
 
 ## 5️⃣ Pin Planning (IO Planning)
-IO pin planning was carried out using an automated `.io` file. Pins were uniformly
-distributed along the periphery of the core to minimize routing complexity and improve
-signal integrity.
+IO pins were uniformly distributed around the periphery of the core using an automated
+`.io` file to improve routability and signal integrity.
 
-![Pin Planning View](results/pin_planning.png)
-*IO pin placement around the core boundary*
+<p align="center">
+  <img src="results/pin_planning.png" width="600">
+</p>
+<p align="center"><i>IO pin placement around the core</i></p>
 
 ---
 
 ## 6️⃣ Power Planning
-A robust power distribution network was implemented using horizontal and vertical
-VDD/VSS rails and power stripes across multiple metal layers. This ensures stable
-power delivery, minimal IR drop, and reliable operation under high switching activity.
+A robust power distribution network was implemented using VDD/VSS rails and power
+stripes across multiple metal layers to ensure reliable power delivery.
 
-![Power Planning View](results/power_planning.png)
-*Power planning with VDD/VSS stripes across the core*
+<p align="center">
+  <img src="results/power_planning.png" width="600">
+</p>
+<p align="center"><i>Power planning with VDD/VSS stripes</i></p>
 
 ---
 
 ## 7️⃣ Standard Cell Placement
-Standard cells were placed to minimize wirelength, reduce congestion, and achieve
-better timing closure. Arithmetic blocks such as the multiplier and accumulator were
-clustered to optimize critical paths.
+Standard cells were placed to minimize wirelength, reduce congestion, and improve
+timing closure. Arithmetic blocks were clustered to optimize critical paths.
 
-![Placement View](results/placement.png)
-*Standard-cell placement of the 64-bit Vedic MAC*
-
----
-
-## 8️⃣ Clock Tree Synthesis (CTS)
-Clock Tree Synthesis was performed to distribute the clock uniformly across all
-sequential elements while minimizing clock skew and latency.
+<p align="center">
+  <img src="results/placement.png" width="600">
+</p>
+<p align="center"><i>Standard-cell placement view</i></p>
 
 ---
 
 ## 9️⃣ Routing
-Global and detailed routing were completed using multiple metal layers while strictly
-adhering to 90nm design rules. Routing was optimized to reduce parasitics and
-congestion.
+Global and detailed routing were completed while adhering to 90nm design rules.
 
-![Routed Layout](results/routed_layout.png)
-*Fully routed layout of the 64-bit Vedic MAC*
+<p align="center">
+  <img src="results/routed_layout.png" width="600">
+</p>
+<p align="center"><i>Fully routed layout</i></p>
 
 ---
 
 ## 🔟 Antenna Check
-Antenna rule checks were performed to prevent charge accumulation on long metal
-interconnects during fabrication. Any antenna violations were resolved using diode
-insertion or routing optimization.
+Antenna rule checks were performed and violations were resolved using diode insertion
+and routing optimization.
 
-![Antenna Report](reports/antenna_report.png)
-*Antenna check report after routing*
+<p align="center">
+  <img src="reports/antenna_report.png" width="650">
+</p>
+<p align="center"><i>Antenna check report</i></p>
 
 ---
 
 ## 1️⃣1️⃣ Physical Verification (DRC)
-Design Rule Checking (DRC) was performed to ensure that the layout satisfies all
-foundry manufacturing constraints. The design completed DRC with zero violations.
+The design completed Design Rule Checking (DRC) with zero violations.
 
-![DRC Report](reports/drc_report.png)
-*DRC report showing zero violations*
+<p align="center">
+  <img src="reports/drc_report.png" width="650">
+</p>
+<p align="center"><i>DRC clean report</i></p>
 
 ---
 
 ## 1️⃣2️⃣ Area Utilization
-Post-layout area analysis shows that the Vedic multiplier occupies the majority of
-the silicon area due to its hierarchical structure. The overall layout fits within the
-defined floorplan and maintains sufficient whitespace for routing.
+Post-layout area analysis confirms efficient utilization of silicon area.
 
-![Area Report](reports/area_report.png)
-*Final area utilization report*
+<p align="center">
+  <img src="reports/area_report.png" width="600">
+</p>
+<p align="center"><i>Final area utilization</i></p>
 
 ---
 
 ## 1️⃣4️⃣ Post-Layout Timing Analysis
-Parasitic extraction and post-layout static timing analysis were performed. The design
-achieved **positive timing slack**, confirming successful timing closure at the target
-clock frequency.
+Post-layout STA confirms **positive timing slack**, indicating successful timing closure.
 
-![Timing Analysis](reports/timing_analysis.png)
-*Post-layout timing analysis with positive slack*
+<p align="center">
+  <img src="reports/timing_analysis.png" width="650">
+</p>
+<p align="center"><i>Post-layout timing analysis</i></p>
 
 ---
 
 ## 1️⃣5️⃣ GDSII Generation
-The final GDSII layout was generated after successful completion of routing and
-physical verification, completing the RTL-to-GDSII flow.
+The final GDSII layout was generated after successful routing and physical verification.
 
-⚠️ **Note:** GDSII files and standard-cell libraries are not included due to EDA
-licensing and NDA restrictions.
-
----
-
+⚠️ **Note:** GDSII and standard-cell libraries are excluded due to EDA licensing
+and NDA restrictions.
